@@ -46,8 +46,7 @@ ifeq ($(HOST_OS),linux)
   ifneq (false,$(WITH_DEXPREOPT_DEBUG_INFO))
     PRODUCT_DEX_PREOPT_BOOT_FLAGS += --generate-mini-debug-info
   endif
-
-  # Non eng linux builds must have preopt enabled so that system server doesn't run as interpreter
+   # Non eng linux builds must have preopt enabled so that system server doesn't run as interpreter
   # only. b/74209329
   ifeq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
     ifneq (true,$(WITH_DEXPREOPT))
