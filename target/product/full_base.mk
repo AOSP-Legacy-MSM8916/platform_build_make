@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
     build/make/tools/install/backuptool.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool.sh
 
 # Get some sounds
-$(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/GoogleAudio.mk)
 
 # Get a list of languages.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
