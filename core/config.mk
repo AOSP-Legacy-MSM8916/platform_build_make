@@ -1085,4 +1085,11 @@ include $(BUILD_SYSTEM)/ninja_config.mk
 include $(BUILD_SYSTEM)/soong_config.mk
 endif
 
+ifneq ($(LEGACY_BUILD),)
+
+# Include any vendor specific config.mk file
+include $(TOPDIR)build/make/core/legacy.mk
+
+endif
+
 include $(BUILD_SYSTEM)/dumpvar.mk
