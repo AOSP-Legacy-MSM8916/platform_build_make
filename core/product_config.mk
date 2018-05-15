@@ -177,7 +177,7 @@ include $(BUILD_SYSTEM)/device.mk
 
 # A legacy build needs only the specific product makefiles.
 ifneq ($(LEGACY_BUILD),)
-  all_product_configs := $(shell find device -path "*/$(LEGACY_BUILD)/aosp_$(LEGACY_BUILD).mk")
+  all_product_configs := $(shell find device -path "*/*/aosp_$(LEGACY_BUILD).mk")
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
