@@ -523,19 +523,13 @@ def BuildImage(in_dir, prop_dict, out_file, target_out=None):
     build_command = [prop_dict["ext_mkuserimg"]]
     if "extfs_sparse_flag" in prop_dict:
       build_command.append(prop_dict["extfs_sparse_flag"])
-<<<<<<< HEAD
-      run_e2fsck = True
-    build_command.extend([in_dir, out_file, fs_type,
-                          prop_dict["mount_point"]])
-=======
-      #run_fsck = True
+      #run_e2fsck = True
     if "is_userdataextra" in prop_dict:
       build_command.extend([in_dir, out_file, fs_type,
                            "data"])
     else:
       build_command.extend([in_dir, out_file, fs_type,
                             prop_dict["mount_point"]])
->>>>>>> 8900662... Generate extra userdata partition if needed
     build_command.append(prop_dict["partition_size"])
     if "journal_size" in prop_dict:
       build_command.extend(["-j", prop_dict["journal_size"]])
