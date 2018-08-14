@@ -814,11 +814,11 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
 
-  android_version = GetBuildProp("ro.build.version.release", OPTIONS.info_dict)
-  build_id = GetBuildProp("ro.build.id", OPTIONS.info_dict)
-  build_date = GetBuildProp("ro.build.date", OPTIONS.info_dict)
-  security_patch = GetBuildProp("ro.build.version.security_patch", OPTIONS.info_dict)
-  device = GetBuildProp("ro.product.device", OPTIONS.info_dict)
+  android_version = ("ro.build.version.release")
+  build_id = ("ro.build.id")
+  build_date = ("ro.build.date")
+  security_patch = ("ro.build.version.security_patch")
+  device = ("ro.product.device")
   script.Print("----------------------------------------------");
   script.Print("               AOSP LEGACY");
   script.Print("               by TeamLegacy");
@@ -829,6 +829,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print(" Security patch: %s"%(security_patch));
   script.Print(" Device: %s"%(device));
   script.Print("----------------------------------------------");
+
   device_specific.FullOTA_InstallBegin()
 
   if OPTIONS.backuptool:
