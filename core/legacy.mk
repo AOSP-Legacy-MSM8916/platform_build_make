@@ -14,24 +14,6 @@ LEGACY_PROPERTIES := \
     org.legacyaosp.build_type=$(LEGACY_BUILD_TYPE) \
     org.legacyaosp.fingerprint=$(ROM_FINGERPRINT)
 
-# common
-ifneq ($(TARGET_BUILD_VARIANT),user)
-# Thank you, please drive thru!
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.dun.override=0
-endif
-
-ifneq ($(TARGET_BUILD_VARIANT),eng)
-# Enable ADB authentication
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
-endif
-
-ifeq ($(BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE),)
-  PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.device.cache_dir=/data/cache
-else
-  PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.device.cache_dir=/cache
-endif
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
@@ -44,7 +26,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTIES += \
     dalvik.vm.debug.alloc=0 \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
