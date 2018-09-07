@@ -3049,6 +3049,14 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 .PHONY: otapackage
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 
+LEGACY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(LEGACY_VERSION).zip
+
+.PHONY: bacon
+bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
+	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(LEGACY_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(LEGACY_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LEGACY_TARGET_PACKAGE).md5sum
+	@echo "Package Complete: $(LEGACY_TARGET_PACKAGE)" >&2
+
 endif    # build_ota_package
 
 # -----------------------------------------------------------------
